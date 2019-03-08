@@ -6,7 +6,8 @@ import org.springframework.context.annotation.PropertySource;
 
 @Configuration
 @ConfigurationProperties
-@PropertySource(value="file:E:/MyWorkSpaces/Java/eclipse-workspace/SpringBootDemo/target/config/test.yml", encoding="utf-8")
+//@PropertySource(value="file:E:/MyWorkSpaces/Java/eclipse-workspace/SpringBootDemo/target/config/test.yml", encoding="utf-8")
+@PropertySource(value="file:test.yml", encoding="utf-8")
 public class MyConfig {
 	private String version;
 	private String name;
