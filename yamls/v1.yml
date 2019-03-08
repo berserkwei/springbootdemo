@@ -1,0 +1,60 @@
+﻿apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: %name%
+spec:
+  replicas: 2 # We want two pods for this deployment
+  selector:
+    matchLabels:
+      app: %name%
+      ver: %version%
+  template:
+    metadata:
+      labels:
+        app: %name%
+        ver: %version%
+    spec:
+      containers:
+      - name: %name%
+        resources:
+          requests:
+            cpu: 50m
+          limits:
+            cpu: 1000m
+        image: %image%
+        #args:
+        #- "sleep"
+        #- "65536"
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+#        - name: nfs-volume
+#          mountPath: /nfs
+        - name: localtime
+          mountPath: /etc/localtime
+      volumes:
+#      - nfs:
+#          server: 192.168.229.143
+#          path: /var/jenkins
+#        name: nfs-volume
+      - hostPath:
+          path: /etc/localtime
+        name: localtime
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: %name%
+  labels:
+    app: %name%
+    ver: %version%
+spec:
+  type: NodePort
+  ports:
+  - port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: %name%
+    ver: %version%

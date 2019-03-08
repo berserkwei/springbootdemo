@@ -1,0 +1,8 @@
+{
+    "RegistryAddress":"192.168.182.141",
+    "RegistryDomain":"myregistry.com",
+    "Project":"public",
+    "Service":"springbootdemo",
+    "Version":"0.1",
+    "AutoDeploy":true
+}
