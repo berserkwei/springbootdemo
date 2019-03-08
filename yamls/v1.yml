@@ -7,12 +7,12 @@ spec:
   selector:
     matchLabels:
       app: %name%
-      ver: %version%
+      ver: "%version%"
   template:
     metadata:
       labels:
         app: %name%
-        ver: %version%
+        ver: "%version%"
     spec:
       containers:
       - name: %name%
@@ -48,7 +48,7 @@ metadata:
   name: %name%
   labels:
     app: %name%
-    ver: %version%
+    ver: "%version%"
 spec:
   type: NodePort
   ports:
@@ -57,4 +57,4 @@ spec:
     targetPort: 8080
   selector:
     app: %name%
-    ver: %version%
+    ver: "%version%"
