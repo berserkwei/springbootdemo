@@ -1,7 +1,7 @@
-apiVersion: extensions/v1beta2
+apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
-  name: spring-ingress
+  name: %name%
   annotations:
    # nginx.ingress.kubernetes.io/rewrite-target: /
    kubernetes.io/ingress.class: "test"
@@ -12,6 +12,6 @@ spec:
       paths:
       - path: /
         backend:
-          serviceName: springbootdemo-svc
+          serviceName: %name%
           servicePort: 8080
 
